@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="aspnet-CivisSito1-20131208154650" Class="DataClassesListaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-CivisSito1-20131208154650.mdf;Initial Catalog=aspnet-CivisSito1-20131208154650;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="aspnet_CivisSito1_20131208154650ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Categorie" Member="Categorie">
+    <Type Name="Categorie">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Categoria" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Association Name="Categorie_Table" Member="Table" ThisKey="Id" OtherKey="Categoria" Type="Table" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipologie" Member="Tipologie">
+    <Type Name="Tipologie">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tipologia" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Association Name="Tipologie_Table" Member="Table" ThisKey="Id" OtherKey="Tipologia" Type="Table" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stato" Member="Stato">
+    <Type Name="Stato">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Stato" Member="Stato1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Stato_Table" Member="Table" ThisKey="Id" OtherKey="Stato" Type="Table" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Table]" Member="Table">
+    <Type Name="Table">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Categoria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Tipologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Stato" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Libero" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Prezzo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NLocali" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Superficie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpeseCondominiali" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NCamereLetto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NSoggiorno" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnnoCostruzione" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Piano" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotPiani" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClasseEnergetica" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="EPI" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Riscaldamento" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Cucina" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Box" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="NPostiAuto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bagni" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Giardino" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Arredamento" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Ingresso" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Ripostiglio" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Cantina" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Mansarda" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Taverna" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="InfissiInterni" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ImpiantoTv" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Città" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Provincia" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="EsposizioneInt" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EsposizioneEst" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Condizionatore" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Terrazzo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Balcone" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Ascensore" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Caminetto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PortaBlindata" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Idromassaggio" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ImpiantoAllarme" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Piscina" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CampoTennis" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CancelloElettrico" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Portiere" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FibraOttica" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="VideoCitofono" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Categorie_Table" Member="Categorie" ThisKey="Categoria" OtherKey="Id" Type="Categorie" IsForeignKey="true" />
+      <Association Name="Tipologie_Table" Member="Tipologie" ThisKey="Tipologia" OtherKey="Id" Type="Tipologie" IsForeignKey="true" />
+      <Association Name="Stato_Table" Member="Stato1" ThisKey="Stato" OtherKey="Id" Type="Stato" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

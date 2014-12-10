@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="A touchable jQuery lightbox plugin for desktop, mobile and tablet" />
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="source/swipebox.css">
+	<title>Swipebox - Esempio JavaScript scaricato da HTML.it</title>
+	<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Language" content="it" />
+	<meta name="Robots" content="All" />
+	<meta name="Description" content="HTML.it - il sito italiano sul Web publishing" />
+	<meta name="Keywords" content="javascript" />
+	<meta name="Owner" content="HTML.it srl" /> 
+	<meta name="Author" content="HTML.it srl" />  
+	<meta name="Copyright" content="HTML.it srl" />
+	
+	<!-- share buttons -->
+	<script type="text/javascript">(function(doc, script) {
+		var js, 
+		fjs = doc.getElementsByTagName(script)[0],
+		add = function(url, id) {
+		if (doc.getElementById(id)) {return;}
+		js = doc.createElement(script);
+		js.src = url;
+		id && (js.id = id);
+		fjs.parentNode.insertBefore(js, fjs);
+		};add("//connect.facebook.net/en_US/all.js#xfbml=1", "facebook-jssdk");
+		add("//platform.twitter.com/widgets.js", "twitter-wjs");
+		}(document, "script"));
+	</script>
+	<!-- end share buttons -->
+</head>
+<body>
+	<div id="main">
+		<div class="wrap">
+
+			<header>
+				<h1>Swipebox.</h1>
+				<p class="tagline">A touchable jQuery lightbox</p>
+
+			<section id="exemple" class="clearfix">
+				<div id="try"></div>
+				<h2>Try it</h2>
+				<div class="box">
+					<a href="http://swipebox.brutaldesign.com/assets/full/nuke.jpg" class="swipebox" title="Nuke">
+						<img src="http://swipebox.brutaldesign.com/assets/nuke_thumb.jpg" alt="nuke">
+					</a>
+				</div>
+				<div class="box">
+					<a href="http://swipebox.brutaldesign.com/assets/full/leap.jpg" class="swipebox" title="Leap">
+						<img src="http://swipebox.brutaldesign.com/assets/leap_thumb.jpg" alt="leap">
+					</a>
+				</div>
+				<div class="box">
+					<a href="http://swipebox.brutaldesign.com/assets/full/reine.jpg" class="swipebox" title="Reine">
+						<img src="http://swipebox.brutaldesign.com/assets/reine_thumb.jpg" alt="reine">
+					</a>
+				</div>
+				<div class="box">
+					<a href="http://swipebox.brutaldesign.com/assets/full/neptune.jpg" class="swipebox" title="Neptune">
+						<img src="http://swipebox.brutaldesign.com/assets/neptune_thumb.jpg" alt="neptune">
+					</a>
+				</div>
+			</section>
+	</div>
+	<script src="lib/ios-orientationchange-fix.js"></script>
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script src="lib/jquery.isotope.min.js"></script>
+	<script src="source/jquery.swipebox.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+
+			/* Basic Gallery */
+			$(".swipebox").swipebox();
+			
+			/* Video */
+			$(".swipebox-video").swipebox();
+
+
+			/* Dynamic Gallery */
+			$("#gallery").click(function(e){
+				e.preventDefault();
+				$.swipebox([
+					{ href : 'http://swipebox.brutaldesign.com/assets/full/reine.jpg', title : 'My Caption' },
+					{ href : 'http://swipebox.brutaldesign.com/assets/full/nuke.jpg', title : 'My Second Caption' }
+				]);
+			});
+
+
+			/* Isotope */
+			var swipeboxInstance = $(".swipebox-isotope:not(.isotope-hidden .swipebox-isotope)").swipebox();
+
+			var $container = $('#grid');
+			var optionFilter = $('#filter'),
+			optionFilterLinks = optionFilter.find('a');
+			optionFilterLinks.attr('href', '#');
+
+			onAnimationCompleted = function(){
+				swipeboxInstance.refresh();
+			};
+
+			optionFilterLinks.click( function(){
+				var selector = $(this).attr('data-filter');
+				$container.isotope({ 
+					filter : '.' + selector, 
+					itemSelector : '.item',
+					layoutMode : 'fitRows',
+					animationEngine : 'best-available',
+				}, onAnimationCompleted);
+
+				// Highlight the correct filter
+				optionFilterLinks.removeClass('active');
+				$(this).addClass('active');
+
+			
+				return false;
+			});
+		});
+	</script>
+	<div align="center">
+<a href="http://www.html.it"><img src="logo_htmlit.gif" alt="JavaScript scaricato da HTML.it" border="0" width="50" height="50" /></a></div>
+
+</body>
+	
+</html>
