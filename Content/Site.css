@@ -28,7 +28,6 @@ a {
     }
 
     a:hover {
-        background-color: #c7d1d6;
     }
 
 header, footer, hgroup,
@@ -621,12 +620,17 @@ tr.pager td {
 
 }
 .galla:hover img{
--webkit-transform:scale(1,5); /*Webkit: Scale up image to 1.2x original size*/
--moz-transform:scale(1,1); /*Mozilla scale version*/
--o-transform:scale(1.1); /*Opera scale version*/
+-webkit-transform:scale(1.2); /*Webkit: Scale up image to 1.2x original size*/
+-moz-transform:scale(1.2); /*Mozilla scale version*/
+-o-transform:scale(1.2); /*Opera scale version*/
 -moz-box-shadow:1px 1px 30px gray; /*Mozilla shadow version*/
 z-index:0;
- -ms-transform: scale(2.3); /* IE 9 */
+ -ms-transform: scale(1.2); /* IE 9 */
+            opacity: 0.7; 
+            box-shadow: 0px 0px 10px 5px #716556;
+            -webkit-box-shadow: 0px 0px 10px 5px #716556;
+            -moz-box-shadow: 0px 0px 10px 5px #716556;
+ transition:all 1s ease;
 }
 .galla img {
     height:120px;
@@ -638,6 +642,7 @@ z-index:0;
     -moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
     box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
     float:left;
+ transition:all 1s ease;
 }
 
 .newsImg {

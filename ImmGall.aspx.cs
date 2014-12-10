@@ -14,7 +14,7 @@ public partial class ImmGall : System.Web.UI.Page
         System.Threading.Thread.CurrentThread.CurrentUICulture
              = new System.Globalization.CultureInfo("it-IT");
         string cartella = "~/ImgImm/";
-        string[] immagini = System.IO.Directory.GetFiles(Server.MapPath(cartella), Request.QueryString["ID"] + "*.*");
+        string[] immagini = System.IO.Directory.GetFiles(Server.MapPath(cartella), Request.QueryString["ID"] + "-*.*");
         lista.DataSource = immagini;
         lista.DataBind();
     }

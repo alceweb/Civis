@@ -18,12 +18,12 @@
 <body>
     <form runat="server">
     <link href="<%: ResolveUrl(mob) %>" rel="stylesheet" />
-    <asp:ScriptManager runat="server">
+<%--    <asp:ScriptManager runat="server">
         <Scripts>
             <asp:ScriptReference Name="jquery" />
             <asp:ScriptReference Name="jquery.ui.combined" />
         </Scripts>
-    </asp:ScriptManager>
+    </asp:ScriptManager>--%>
         <div id="header">
             <header>
                 <div class="content-wrapper">

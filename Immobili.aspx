@@ -8,8 +8,9 @@
     <p class="TitoloVetrina">
         I nostri immobili
     </p>
-    <div class="ListImm" >Fai click sull'intestazione della colonna per ordinare i records
-<%--        <asp:Label ID="Label9" runat="server" Text="Parametri selezione: "></asp:Label>
+    <div class="ListImm">
+        <div style="text-align: center; width:100%">Fai click sull'intestazione della colonna per ordinare i records</div>
+        <%--        <asp:Label ID="Label9" runat="server" Text="Parametri selezione: "></asp:Label>
         <asp:Label ID="Label8" runat="server" Text="Categoria"></asp:Label>
         <asp:DropDownList ID="DropDownListCat" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="Categoria" DataValueField="Id"></asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Categorie] ORDER BY [Categoria]"></asp:SqlDataSource>
@@ -25,10 +26,14 @@
             <Columns>
                 <asp:TemplateField HeaderText="">
                     <ItemTemplate>
-                       <a href='ImmDett.aspx?id=<%#Eval("id")%>' ><asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" +Eval("id") + ".jpg" %>' /></a>
+                        <span class="galla">
+                            <a href='ImmDett.aspx?id=<%#Eval("id")%>'>
+                                <asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" +Eval("id") + ".jpg" %>' /></a>
+
+                        </span>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="Codice" HeaderText="Cod." SortExpression="Codice" >
+                <asp:BoundField DataField="Codice" HeaderText="Cod." SortExpression="Codice">
                     <ItemStyle HorizontalAlign="Left" Width="40px" />
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Città" SortExpression="Città">
@@ -63,7 +68,7 @@
                         <asp:Label CssClass="labRigth" wui="130px" ID="Label6" runat="server" Text='<%# Bind("Prezzo", "{0:C0}") %>'></asp:Label>
                     </ItemTemplate>
 
-<HeaderStyle HorizontalAlign="Right" Width="130px"></HeaderStyle>
+                    <HeaderStyle HorizontalAlign="Right" Width="130px"></HeaderStyle>
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />

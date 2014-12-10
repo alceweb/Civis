@@ -11,16 +11,18 @@
     <ItemTemplate>
     <table class="ListImm">
         <tr>
-            <td style="padding-left: 10px" colspan="4">
+            <td style="padding-left: 10px; height:55px; background-color: #3E5873; color: #FFFFFF;" colspan="4">
                 <span style="float: left; margin-left: 40px">Codice immobile: 
                     <asp:Label ID="IdLabel" CssClass="LabelForm" runat="server" Text='<%# Eval("Codice") %>' /></span>
-                <asp:Label ID="LabelCittà" runat="server">Città: </asp:Label>
+                <asp:Label ID="LabelCittà" runat="server"> - Città: </asp:Label>
                 <asp:Label ID="LabelBoxCittà1" CssClass="LabelForm" runat="server" Text='<%# Bind("Città") %>' />
-                <asp:Label ID="LabelProvincia" runat="server">Provincia: </asp:Label>
+                <asp:Label ID="LabelProvincia" runat="server"> - Provincia: </asp:Label>
                 <asp:Label ID="LabelProvincia1" CssClass="LabelForm" Width="30px" runat="server" Text='<%# Bind("Provincia") %>' />
-                <a class="labRigth" style="color:#942b2b" href="ImmGall.aspx?id=<%# Eval("Id")%>">
-                    Galleria fotografica<img Style="border-style: none; height:24px; float:right " src="Images/Picture.png" /></a>
-                <hr />
+                <span class="galla">
+                <a class="labRigth" style="color:#fff" href="ImmGall.aspx?id=<%# Eval("Id")%>">
+                    <img Style="border-style: none; margin-right:20px; height:46px" src='<%#"ImgImm/" +Eval("id") + ".jpg" %>' />    Galleria fotografica</a>
+
+                </span>
             </td
 
         </tr>
