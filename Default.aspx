@@ -126,8 +126,11 @@
             <Columns>
                 <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
+                        <span class="galla">
                         <a href='ImmDett.aspx?id=<%#Eval("id")%>'>
                             <asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" + Eval("id") + ".jpg" %>' /></a>
+
+                        </span>
                     </ItemTemplate>
                     <ItemStyle Width="10px" />
                 </asp:TemplateField>
