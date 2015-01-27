@@ -27,7 +27,7 @@
         <div id="header">
             <header>
                 <div class="content-wrapper">
-                        <img class="logo" src="Images/Logo.png" />
+                        <img class="logo" src='<%: ResolveUrl("~/Images/Logo.png") %>' />
                     <div class="float-right">
                         <nav>
                             <ul id="menu">

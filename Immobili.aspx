@@ -9,7 +9,9 @@
         I nostri immobili
     </p>
     <div class="ListImm">
-        <div style="text-align: center; width:100%">Fai click sull'intestazione della colonna per ordinare i records</div>
+        <div style="text-align: center; width:100%">Fai click sull'intestazione della colonna per ordinare i records<br />
+            <asp:LinkButton ID="LinkButton1" ForeColor="green" runat="server" PostBackUrl="~/CercaImmobili.aspx">Cerca il tuo immobile</asp:LinkButton>
+        </div>
         <%--        <asp:Label ID="Label9" runat="server" Text="Parametri selezione: "></asp:Label>
         <asp:Label ID="Label8" runat="server" Text="Categoria"></asp:Label>
         <asp:DropDownList ID="DropDownListCat" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="Categoria" DataValueField="Id"></asp:DropDownList>
@@ -29,7 +31,6 @@
                         <span class="galla">
                             <a href='ImmDett.aspx?id=<%#Eval("id")%>'>
                                 <asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" +Eval("id") + ".jpg" %>' /></a>
-
                         </span>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -88,9 +89,7 @@
                                 Inner Join Categorie on [Table].[Categoria] = [categorie].[ID]
                                 Inner Join Tipologie on [Table].[Tipologia] = [Tipologie].[ID]
                                 Inner Join Stato on [Table].[Stato] = [Stato].[ID]
-                        WHERE [Table].[Pubblica] = @Pubblica">
-                        <SelectParameters>
-                            <asp:Parameter DefaultValue="True" Name="Pubblica" Type="Boolean" />
-                        </SelectParameters>                    </asp:SqlDataSource>
+                        WHERE [Table].[Pubblica] = 1">
+                    </asp:SqlDataSource>
 </asp:Content>
 

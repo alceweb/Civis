@@ -1,13 +1,101 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ImmDett.aspx.cs" Inherits="ImmDett" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="CercaImmobili.aspx.cs" Inherits="CercaImmobili" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" Runat="Server">
-    </asp:Content>
-
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <p class="TitoloVetrina">Scheda immobile</p>
-    <asp:FormView ID="FormView1" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource2" HorizontalAlign="Center">
+    <p class="TitoloVetrina">
+        Cerca il tuo immobile
+    </p>
+    <table>
+        <tr>
+            <td style="float:left">
+                <table style="width:200px; left:0px">
+                    <tr>
+                        <td>
+                            <asp:Label ID="LabelProvincia" runat="server" Text="Provincia"></asp:Label>
+
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DDLProvincia" runat="server" OnSelectedIndexChanged="DDLProvincia_SelectedIndexChanged" AutoPostBack="True" DataSourceID="SqlDSProvincia" DataTextField="Provincia" DataValueField="Provincia"></asp:DropDownList><br />
+                            <asp:SqlDataSource ID="SqlDSProvincia" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT DISTINCT [Provincia] FROM [Table] ORDER BY [Provincia]"></asp:SqlDataSource>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="LabelCittà" runat="server" Text="Città"></asp:Label>
+
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DDLCittà" OnSelectedIndexChanged="DDLCittà_SelectedIndexChanged" runat="server" AutoPostBack="True" DataSourceID="SqlDSCittà" DataTextField="Città" DataValueField="Città"></asp:DropDownList><br />
+                            <asp:SqlDataSource ID="SqlDSCittà" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                                SelectCommand="SELECT DISTINCT [Città] FROM [Table] WHERE ([Provincia] = @Provincia) ORDER BY [Città]">
+                                <SelectParameters>
+                                    <asp:ControlParameter ControlID="DDLProvincia" Name="Provincia" PropertyName="SelectedValue" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="LabelTipo" runat="server" Text="Tipologia"></asp:Label>
+
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DDLTipologia" OnSelectedIndexChanged="DDLTipologia_SelectedIndexChanged" runat="server" AutoPostBack="True" DataSourceID="SqlDSTipo" DataTextField="Tipo" DataValueField="Tipologia"></asp:DropDownList><br />
+                            <asp:SqlDataSource ID="SqlDSTipo" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                                SelectCommand="SELECT distinct [Table].[Tipologia], [Tipologie].[Tipologia] as tipo FROM [Table] join [Tipologie] on [Table].[Tipologia]=[Tipologie].[Id] WHERE (([Provincia]=@Provincia) and ([Città] = @Città)) ORDER BY [Tipo]">
+                                <SelectParameters>
+                                    <asp:ControlParameter ControlID="DDLProvincia" Name="Provincia" PropertyName="SelectedValue" Type="String" />
+                                    <asp:ControlParameter ControlID="DDLCittà" Name="Città" PropertyName="SelectedValue" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+
+                        </td>
+                    </tr>
+                </table>
+                <hr />
+                <asp:ListView ID="ListView1" runat="server" SelectedIndex="-1" DataKeyNames="Id" DataSourceID="SqlDSListView1">
+                    <ItemSeparatorTemplate>
+                        <br />
+                    </ItemSeparatorTemplate>
+                    <EmptyDataTemplate>
+                        <span>Non è stato restituito alcun dato.</span>
+                    </EmptyDataTemplate>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" CommandName="Select" runat="server">
+                            <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Eval("Cat") %>' />
+                            <asp:Label ID="StatoLabel" runat="server" Text='<%# " - " + Eval("St") %>' />
+                            <asp:Label ID="PrezzoLabel" runat="server" Text='<%# " - " + Eval("Prezzo", "{0:C0}") %>' />
+                        </asp:LinkButton></span>
+                    </ItemTemplate>
+                    <SelectedItemTemplate>
+                        <span style="color: #FFFFFF; background-color: #000000;"  style="">
+                            <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Eval("Cat") %>' />
+                            <asp:Label ID="StatoLabel" runat="server" Text='<%# " - " + Eval("St") %>' />
+                            <asp:Label ID="PrezzoLabel" runat="server" Text='<%# " - " + Eval("Prezzo", "{0:C0}") %>' />
+                        </span>
+                    </SelectedItemTemplate>
+                    <LayoutTemplate>
+                        <div id="itemPlaceholderContainer" runat="server" style="">
+                            <span runat="server" id="itemPlaceholder" />
+                        </div>
+                    </LayoutTemplate>
+                </asp:ListView>
+                <asp:SqlDataSource ID="SqlDSListView1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                    SelectCommand="SELECT *, [Categorie].[Categoria] as Cat, [Stato].[Stato] as St FROM [Table] inner join [Categorie] on [Table].[Categoria] =[Categorie].[Id] inner join [Stato] on [Table].[Stato] = [Stato].[Id] WHERE (([Provincia]=@Provincia) and ([Città] = @Città) and ([Tipologia] = @Tipologia)) Order By [Prezzo]">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DDLProvincia" Name="Provincia" PropertyName="SelectedValue" Type="String" />
+                        <asp:ControlParameter ControlID="DDLCittà" Name="Città" PropertyName="SelectedValue" Type="String" />
+                        <asp:ControlParameter ControlID="DDLTipologia" Name="Tipologia" PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+            <td>
+    <asp:FormView ID="FormView1" Visible="true" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource2" HorizontalAlign="Center">
     <ItemTemplate>
     <table class="ListImm">
         <tr>
@@ -336,10 +424,14 @@
                 Inner Join Taverna on [Table].[Taverna] = [Taverna].[ID] 
                 Inner Join Infissi on [Table].[InfissiInterni] = [Infissi].[ID] 
                 Inner Join ImpiantoTv on [Table].[ImpiantoTv] = [ImpiantoTv].[ID] 
-        WHERE ([Table].[Id] = @Id)">
-        <SelectParameters>
-            <asp:QueryStringParameter Name="Id" QueryStringField="id" Type="Int32" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+        WHERE [Table].[Id] = @Idi">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ListView1" Name="Idi" PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+
+            </td>
+        </tr>
+    </table>
 </asp:Content>
 
