@@ -9,20 +9,37 @@
         I nostri immobili
     </p>
     <div class="ListImm">
-        <div style="text-align: center; width:100%">Fai click sull'intestazione della colonna per ordinare i records<br />
-            <asp:LinkButton ID="LinkButton1" ForeColor="green" runat="server" PostBackUrl="~/CercaImmobili.aspx">Cerca il tuo immobile</asp:LinkButton>
-        </div>
-        <%--        <asp:Label ID="Label9" runat="server" Text="Parametri selezione: "></asp:Label>
-        <asp:Label ID="Label8" runat="server" Text="Categoria"></asp:Label>
-        <asp:DropDownList ID="DropDownListCat" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="Categoria" DataValueField="Id"></asp:DropDownList>
+        <div style="text-align: center; padding:0; margin:auto; width:98%">
+            <asp:Button ID="LinkButton1" ForeColor="green" runat="server" PostBackUrl="~/CercaImmobili.aspx" Text="Cerca il tuo immobile"></asp:Button>
+        <asp:ListView ID="ListView1" runat="server" DataKeyNames="Id" SelectedIndex="5" DataSourceID="SqlDataSource3" >
+            <ItemTemplate>
+                <td runat="server" style="text-align:center">
+                    <asp:LinkButton ID="Button1" CommandName="Select" runat="server" Text='<%# Eval("Categoria") %>' />
+                    </td>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <table runat="server">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table class="tbl2" id="itemPlaceholderContainer" runat="server" border="0" style="">
+                                <tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style=""></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <td runat="server" style="background-color: #5D7B9D; color: #FFFFFF; text-align:center">
+                    <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Eval("Categoria") %>' />
+                    </td>
+            </SelectedItemTemplate>
+        </asp:ListView>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Categorie] ORDER BY [Categoria]"></asp:SqlDataSource>
-        <asp:Label ID="Label7" runat="server" Text="città"></asp:Label>
-        <asp:DropDownList ID="DropDownListCit" runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceCit" DataTextField="Città" DataValueField="Città"></asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSourceCit" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Table] WHERE ([Categoria] = @Categoria) ORDER BY [Città]">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="DropDownListCat" Name="Categoria" PropertyName="SelectedValue" Type="Byte" />
-            </SelectParameters>
-        </asp:SqlDataSource>--%>
+        </div>
         <asp:GridView ID="GridView1" Width="1024px" runat="server" AllowSorting="True" CellPadding="1" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
@@ -73,6 +90,9 @@
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />
+            <EmptyDataTemplate>
+                <div style="color:red; text-align:center; width:100%; padding-top:20px; padding-bottom:20px">Nessun immobile trovato per la categoria selezionata</div>
+            </EmptyDataTemplate>
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
@@ -85,11 +105,14 @@
         </asp:GridView>
     </div>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-                        SelectCommand="SELECT [Table].[Id], [Table].[Codice], [Table].[Città], [Table].[Prezzo], [Table].[Provincia] , Categorie.categoria, Stato.Stato, Tipologie.Tipologia FROM [Table]  
+                        SelectCommand="SELECT [Table].[Id], [Table].[Codice], [Table].[Città], [Table].[Prezzo], [Table].[Provincia] , Categorie.categoria, Categorie.Id, Stato.Stato, Tipologie.Tipologia FROM [Table]  
                                 Inner Join Categorie on [Table].[Categoria] = [categorie].[ID]
                                 Inner Join Tipologie on [Table].[Tipologia] = [Tipologie].[ID]
                                 Inner Join Stato on [Table].[Stato] = [Stato].[ID]
-                        WHERE [Table].[Pubblica] = 1">
+                        WHERE [Table].[Pubblica] = 1 and [Categorie].[Id] = @Categorie">
+                        <SelectParameters>
+                            <asp:ControlParameter name="Categorie" ControlID="ListView1" PropertyName="SelectedValue" />
+                        </SelectParameters>
                     </asp:SqlDataSource>
 </asp:Content>
 

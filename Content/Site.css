@@ -538,12 +538,11 @@ table {
     border-style: none;
     border-color: inherit;
     border-width: 0;
-    width:95%;
     margin-right:auto;
     margin-left:auto;
     border-collapse: collapse;
     border-spacing: 0;
-    margin-top: 0.75em;
+    margin-top: 0;
     margin-bottom: 0px;
 }
 table img {
@@ -605,10 +604,18 @@ td {
     border-style: none;
     border-color: inherit;
     border-width: 0;
-    padding: 0.25em 2em 0.25em 0em;
     vertical-align:top;
 }
-
+.tbl1 {
+    width:auto;
+    box-shadow:3px 3px 10px rgba(50, 50, 50, 0.75);
+}
+.tbl2 {
+    width:auto;
+    margin:0;
+    padding:0;
+    box-shadow:0px 0px 10px rgba(50, 50, 50, 0.75);
+}
 tr.pager td {
     padding: 0 0.25em 0 0;
 }
