@@ -15,7 +15,7 @@
                         </p>
                         <p>
                             <span class="label">Giorgio:</span>
-                            <span><a href="mailto:Marketing@example.com">gamadei@civisimmobiliare.it</a></span>
+                            <span><a href="mailto:Marketing@example.com">info@civisimmobiliare.it</a></span>
                         </p>
                         <p>
                             <span class="label">Elena:</span>
