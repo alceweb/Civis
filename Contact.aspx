@@ -2,9 +2,9 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div>
-        <table class="TabellaListaImm" >
+        <table class="tbl1"  >
             <tr>
-                <td style="width:33%">
+                <td style="width:400px">
                     <section class="contact">
                         <header>
                             <h3>Email:</h3>
@@ -50,40 +50,29 @@
                         </p>
                     </section>
                 </td>
-                <td style="width:33%">
+                <td style="width:250px">
                     <hgroup class="title">
                         <h1>Giorgio Amadei</h1>
                     </hgroup>
-                    <div >
+                    <div style="display:inline-block" >
                         <img style="margin-right:10px; height:230px" src="Images/giorgioAmadei.jpeg" />
 
                     </div>
-                    <p >
-                        &nbsp;</p>
-                    <p >
-                        Cell. 335 6447322<br /> </p>
-                    <p >
-                        <br />
-                        Mail gamadei@civisimmobiliare.it </p>
+                    <div ><br />
+                        Cell. 392 9165724<br />info@civisimmobiliare.it </div>
                 </td>
                 <td>
-
                 </td>
-                <td style="width:33%">
+                <td style="width:250px">
                     <hgroup class="title">
                         <h1>Arch. Elena Poggi</h1>
                     </hgroup>
-                    <div >
-                        <img style="margin-right:10px; height:230px" src="Images/ElenaPoggi.jpeg" />
+                    <div style="display:inline-block" >
+                        <img style="margin-right:10px; height:230px" src="Images/ElenaPoggi.jpeg" /><br />
 
                     </div>
-                    <p >
-                        &nbsp;</p>
-                    <p >
-                        Cell. 392 9165724<br /> </p>
-                    <p >
-                        <br />
-                        Mail epoggi@civisimmobiliare.it </p>
+                    <div ><br />
+                        Cell. 392 9165724<br />epoggi@civisimmobiliare.it </div>
                 </td>
             </tr>
         </table>
