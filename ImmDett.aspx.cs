@@ -40,7 +40,7 @@ public partial class ImmDett : System.Web.UI.Page
         mMailMessage.From = new MailAddress(from);
         //Aggiungo il destinatario 
         mMailMessage.To.Add(new MailAddress(to));
-        mMailMessage.To.Add(new MailAddress("info@civisimmobiliare.eu "));
+        mMailMessage.To.Add(new MailAddress("info@civisimmobiliare.it "));
         //L'oggetto 
         mMailMessage.Subject = "Richiesta on-line dal sito web civisimmobiliare.eu";
         //Il corpo 
