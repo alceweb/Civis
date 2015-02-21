@@ -34,7 +34,8 @@
              - Prezzo: <em>
                 <asp:Label ID="PrezzoLabel" runat="server" Text='<%# Eval("Prezzo", "{0:c0}") %>' Font-Bold="True" /></em>
              - Superficie Mq: <em>
-                <asp:Label ID="SupLabel" runat="server" Text='<%# Eval("Superficie") %>' Font-Bold="True" /></em>
+                <asp:Label ID="SupLabel" runat="server" Text='<%# Eval("Superficie") %>' Font-Bold="True" /></em><hr />
+                <a href='<%# "ImmDett.aspx?id=" +  Eval("Id") %>' runat="server" style="color:#FFFFFF; font-weight: bold; float: right; font-style: italic;" >Torna alla scheda immobile</a>
             </td>
         </ItemTemplate>
         <LayoutTemplate>
