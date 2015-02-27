@@ -6,6 +6,9 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
     <p class="TitoloVetrina">Lista immobili obsoleti/non pubblicati</p>
+    <h3 style="text-align:center"><strong>ATTENZIONE </strong>Per essere eliminato un immobile non deve essere pubblicato<br />
+        Quelli che appaiono nella lista qui sotto NON sono pubblicati.
+    </h3>
     <div class="ListImm">
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" DataKeyNames="Id">
         <EmptyDataTemplate>

@@ -6,8 +6,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
     <p class="TitoloVetrina">Gestione Immagini</p>
-    <p class="float-left"><a href="ListaImm.aspx">Torna alla lista</a></p>
-    <hr />
         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
             <EmptyDataTemplate>
                 <table id="Table1" runat="server" style="">
@@ -56,10 +54,11 @@
                 <asp:QueryStringParameter Name="Id" QueryStringField="id" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
+    <h3 ><a href="ListaImm.aspx">Torna alla lista</a></h3>
+    <hr />
     <table>
         <tr runat="server" style="border-bottom-style: solid; border-width: thin; border-color: #000000">
             <td style="width:600px">
-                <img style="margin: 10px; height:150px" src="../ImgImm/<%=Request.QueryString["ID"] %>.jpg" />
                 <h2>Immagine principale</h2>
                  <p>Questa immagine apparira nella lista di fianco all'immobile con ID:<strong><%=Request.QueryString["ID"] %></strong></p>
                 <asp:Label ID="Label2" runat="server"></asp:Label>
@@ -68,11 +67,12 @@
                 <asp:Label ID="UploadStatusLabel1" runat="server" CssClass="error" />
             </td>
             <td>
+                <img style="margin: 10px; height:150px" src="../ImgImm/<%=Request.QueryString["ID"] %>.jpg" />
 
             </td>
         </tr>
         <tr>
-            <td style="text-align: right"  >
+            <td >
                 <h2>Imagini galleria</h2>
                 <p>Queste immagini comporranno la galleria dell'immobile con ID:<strong><%=Request.QueryString["ID"] %></strong></p>
                 <asp:FileUpload ID="FileUpload2" runat="server" /><br />

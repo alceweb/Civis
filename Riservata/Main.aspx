@@ -9,6 +9,7 @@
     <ul>
         <li><a href="AddImmobile.aspx">Aggiungi immobile</a></li>
         <li><a href="ListaImm.aspx">Lista immobili / modifica</a></li>
+        <li><a href="GestioneFile.aspx">Gestione file </a></li>
         <li><a href="ImmElimina.aspx" title="Per essere eliminato l'immobile non deve essere pubblicato">Elimina immobili</a></li>
         <li><a href="PlugInAdmin.aspx">Plugin drop box list</a></li>
         <li><a href="NewsAdmin.aspx">News e aggiornamenti</a></li>
