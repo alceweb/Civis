@@ -14,4 +14,19 @@ public partial class _Default : Page
         System.Threading.Thread.CurrentThread.CurrentUICulture
              = new System.Globalization.CultureInfo("it-IT");
     }
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        if (pnlMappa.Visible.Equals(false))
+        {
+            pnlSede.Visible = false;
+            pnlMappa.Visible = true;
+            LinkButton1.Text = "Mostra sede";
+        }
+        else 
+        {
+            pnlSede.Visible = true;
+            pnlMappa.Visible = false;
+            LinkButton1.Text = "Mostra mappa";
+        }
+    }
 }

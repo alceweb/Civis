@@ -63,7 +63,7 @@
                  <p>Questa immagine apparira nella lista di fianco all'immobile con ID:<strong><%=Request.QueryString["ID"] %></strong></p>
                 <asp:Label ID="Label2" runat="server"></asp:Label>
                 <asp:FileUpload ID="FileUpload1" runat="server" /><br />
-                <asp:Button ID="UploadImgButton" runat="server" Text="Carica immagine" OnClick="UploadImgButton_Click"></asp:Button>
+                <asp:Button ID="UploadImgButton" BackColor="Green" ForeColor="White" runat="server" Text="Carica immagine" OnClick="UploadImgButton_Click"></asp:Button>
                 <asp:Label ID="UploadStatusLabel1" runat="server" CssClass="error" />
             </td>
             <td>
@@ -75,9 +75,9 @@
             <td >
                 <h2>Imagini galleria</h2>
                 <p>Queste immagini comporranno la galleria dell'immobile con ID:<strong><%=Request.QueryString["ID"] %></strong></p>
-                <asp:FileUpload ID="FileUpload2" runat="server" /><br />
-                <asp:Button ID="UploadgallButton" runat="server" Text="Carica immagina per galleria" OnClick="UploadgallButton_Click"></asp:Button>
-                <asp:Label ID="UploadStatusLabel2" runat="server" CssClass="error" />
+                <asp:FileUpload ID="FileUpload2" AllowMultiple="true" runat="server" /><br />
+                <asp:Button ID="UploadgallButton" BackColor="Green" ForeColor="White" runat="server" Text="Carica immagina per galleria" OnClick="UploadgallButton_Click"></asp:Button>
+                <asp:Label ID="UploadStatusLabel2" runat="server" CssClass="error" Text="CTRL + Click per selezionare più files" />
             </td>
             <td style="vertical-align:top">
                 <div>

@@ -11,17 +11,11 @@ public partial class Riservata_GestioneFile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        lb1Label.Text = lb1.SelectedValue;
     }
     protected void ListView1_DataBound(object sender, EventArgs e)
     {
         string cartella = "~/ImgImm/";
-        string[] img = System.IO.Directory.GetFiles(Server.MapPath(cartella), ListView1.SelectedValue + "-*.jpg");
         string[] pdf = System.IO.Directory.GetFiles(Server.MapPath(cartella), "*.pdf");
-        ListViewImg.DataSource = img;
-        ListViewImg.DataBind();
-        lb1.DataSource = img;
-        lb1.DataBind();
         lb2.DataSource = pdf;
         lb2.DataBind();
         if (ListView1.SelectedIndex != -1)
@@ -32,7 +26,18 @@ public partial class Riservata_GestioneFile : System.Web.UI.Page
         {
             Panel1.Visible = false;
         }
+        string[] filePaths = Directory.GetFiles(Server.MapPath(cartella), ListView1.SelectedValue + "-*jpg*");
+        List<ListItem> files = new List<ListItem>();
+        foreach (string filePath in filePaths)
+        {
+            files.Add(new ListItem(Path.GetFileName(filePath), filePath));
+        }
+        ListView2.DataSource = files;
+        ListView2.DataBind();
 
+    }
+    protected void ListView1_SelectedIndexChanging(object sender, ListViewSelectEventArgs e)
+    {
     }
     protected void btnDelPdf_Click(object sender, EventArgs e)
     {
@@ -56,23 +61,18 @@ public partial class Riservata_GestioneFile : System.Web.UI.Page
     protected void lb1_DataBound(object sender, EventArgs e)
     {
     }
-    protected void btnDelJpg_Click(object sender, EventArgs e)
+    protected void DownloadFile(object sender, EventArgs e)
     {
-        if (lb1.SelectedValue != "")
-        {
-            System.IO.File.Delete(lb1.SelectedValue);
-            lblDeleteOkJpg.ForeColor = Color.Green;
-            lblDeleteOkJpg.Text = "Il file <strong>" + lb1.SelectedValue + "</strong> è stata eliminato!!!";
-        }
-        else
-        {
-            lblDeleteOkJpg.ForeColor = Color.Red;
-            lblDeleteOkJpg.Text = "Non hai selezionato nessun file.<strong> NESSUN FILE CANCELLATO!!!</strong>";
-        }
+        string filePath = (sender as LinkButton).CommandArgument;
+        Response.ContentType = ContentType;
+        Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(filePath));
+        Response.WriteFile(filePath);
+        Response.End();
     }
-    protected void btnAnnullaJpg_Click(object sender, EventArgs e)
+    protected void DeleteFile(object sender, EventArgs e)
     {
-        lblDeleteOkJpg.Text = "Seleziona un file dalla per cancellarlo";
-        lb1.SelectedIndex = -1;
+        string filePath = (sender as LinkButton).CommandArgument;
+        File.Delete(filePath);
+        Response.Redirect(Request.Url.AbsoluteUri);
     }
 }

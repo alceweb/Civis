@@ -1,25 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Mobile.master" AutoEventWireup="true" CodeFile="Default1.aspx.cs" Inherits="Default1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default1.aspx.cs" Inherits="Default1" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
 	<script type="text/javascript" src="Scripts/jquery-1.2.2.pack.js"></script>
 	<script type="text/javascript" src="Scripts/ddaccordion.js"></script>
 <style type="text/css">
 
-.dropdown{ /*header of 1st demo*/
-cursor: pointer;
-text-align:left;
-text-decoration:underline;
-padding-left:130px;
-}
-.openlist{
-    font-weight:bold; /*class added to contents of 1st demo when they are open*/
-}
-.list {
-    color:#80030b;
-    text-align:justify;
-    padding-left:130px;
-    text-indent:20px;
-}
 </style>
     <script type="text/javascript">
         ddaccordion.init({
@@ -43,12 +28,12 @@ padding-left:130px;
         })
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <table class="TableVetrina" >
-        <tr>
-            <td >
+
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <div style="background-image: url('/Images/Strappo.jpg'); background-repeat: no-repeat; background-position: 100% 100%; float: right; width: 400px; height: 300px;">
+        <a class="linka" href="DefaultPr.aspx">Immobili di prestigio</a>
+    </div>
+    <div class="TableVetrina" >
                 <h3 class="TitoloVetrina">I nostri servizi</h3>
                 <h5>
                 <img alt="" src="Images/Libri1.jpg" />
@@ -134,43 +119,43 @@ padding-left:130px;
                 <div class="list">
                     L’investimento nel mercato immobiliare è tradizionalmente redditizio ma estremamente influenzato dall’andamento del mercato.<br />
                     La CIVIS IMMOBILIARE offre alle imprese e al cliente privato la valutazione del piano economico relativo ad un investimento immobiliare con il reperimento dell’immobile o il calcolo di costi e ricavi
-                <hr />
-                </div>
-            </td>
-            <td>
-                <h3 class="TitoloVetrina">Occasioni</h3>
-                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
-                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                        <Columns>
-                            <asp:TemplateField ShowHeader="False">
-                                <ItemTemplate>
-                                    <a href='ImmDett.aspx?id=<%#Eval("id")%>' ><asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" + Eval("id") + ".jpg" %>' /></a>
-                                 </ItemTemplate>
-                                <ItemStyle Width="10px" />
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="Città" />
-                            <asp:BoundField DataField="Tipologia" />
-                            <asp:BoundField DataField="Prezzo" DataFormatString="{0:C0}" >
-                            <HeaderStyle HorizontalAlign="Right" />
-                            </asp:BoundField>
-                        </Columns>
-                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Table].[Id], [Table].[Città], [Table].[Prezzo], [Table].[Superficie], Tipologie.Tipologia FROM [Table]
-                        Inner Join Tipologie on [Table].[Tipologia] = [Tipologie].[ID]  
-                         WHERE [Table].[Vetrina] = @Vetrina">
-                        <SelectParameters>
-                            <asp:Parameter DefaultValue="True" Name="Vetrina" Type="Boolean" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-            </td>
-            <td>
+    </div>
+        <hr />
+        </div>            
+    <div class="Occasioni">
+        <h3 class="TitoloVetrina">Occasioni</h3>
+        <asp:GridView ID="GridView1" runat="server" CellPadding="2" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <Columns>
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <span class="galla">
+                        <a href='ImmDett.aspx?id=<%#Eval("id")%>'>
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" + Eval("id") + ".jpg" %>' /></a>
 
-            </td>
-        </tr>
-    </table>
+                        </span>
+                    </ItemTemplate>
+                    <ItemStyle Width="10px" />
+                </asp:TemplateField>
+                <asp:BoundField DataField="Città" />
+                <asp:BoundField DataField="Tipologia" />
+                <asp:BoundField DataField="Prezzo" DataFormatString="{0:N0}">
+                    <HeaderStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+            </Columns>
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Table].[Id], [Table].[Città], [Table].[Prezzo], [Table].[Superficie], Tipologie.Tipologia FROM [Table]
+            Inner Join Tipologie on [Table].[Tipologia] = [Tipologie].[ID]  
+                WHERE [Table].[Vetrina] = @Vetrina">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="True" Name="Vetrina" Type="Boolean" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    </div>
 </asp:Content>
-
+<asp:Content ID="Content1" runat="server" contentplaceholderid="HeadContent">
+    </asp:Content>

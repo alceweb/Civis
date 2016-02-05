@@ -43,7 +43,6 @@ public partial class Riservata_GestioneImmobile : System.Web.UI.Page
     {
         string Testa = Request.QueryString["ID"];
         string saveDir = Server.MapPath("~/ImgImm/");
-
         if (FileUpload2.HasFile)
         {
             string Estensione = System.IO.Path.GetExtension(FileUpload2.PostedFile.FileName).Substring(1);

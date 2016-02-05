@@ -4,44 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.IO;
 
 public partial class Test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Request.Cookies["civis"] != null)
         {
-            string[] filePaths = Directory.GetFiles(Server.MapPath("~/ImgImm/"));
-            List<ListItem> files = new List<ListItem>();
-            foreach (string filePath in filePaths)
-            {
-                files.Add(new ListItem(Path.GetFileName(filePath), filePath));
-            }
-            GridView1.DataSource = files;
-            GridView1.DataBind();
-            ListView1.DataSource = files;
-            ListView1.DataBind();
+            PnlCookie.Visible = false;
         }
     }
-    protected void UploadFile(object sender, EventArgs e)
+    protected void CookieButton_Click(object sender, EventArgs e)
     {
-        string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
-        FileUpload1.PostedFile.SaveAs(Server.MapPath("~/ImgImm/") + fileName);
-        Response.Redirect(Request.Url.AbsoluteUri);
-    }
-    protected void DownloadFile(object sender, EventArgs e)
-    {
-        string filePath = (sender as LinkButton).CommandArgument;
-        Response.ContentType = ContentType;
-        Response.AppendHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(filePath));
-        Response.WriteFile(filePath);
-        Response.End();
-    }
-    protected void DeleteFile(object sender, EventArgs e)
-    {
-        string filePath = (sender as LinkButton).CommandArgument;
-        File.Delete(filePath);
-        Response.Redirect(Request.Url.AbsoluteUri);
+        //HttpCookie myCookie = new HttpCookie("civis");
+        //myCookie["Accettato"] = "Cookies accettati";
+        //myCookie["Data"] = DateTime.Now.ToString();
+        //myCookie.Expires = DateTime.Now.AddDays(-1d);
+        //Response.Cookies.Add(myCookie);
+        //PnlCookie.Visible = false;
     }
 }

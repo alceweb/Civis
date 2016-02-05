@@ -65,7 +65,7 @@
                         </span>
                     </td>
                     <td>
-                        <span class="labLeft">Superficie m<sup>2</sup>:</span>
+                        <span class="labLeft">Superficie comm. m<sup>2</sup>:</span>
                         <span class="labRigth">
                             <asp:TextBox ID="SuperficieTextBox" Width="100px" runat="server" Text='<%# Bind("Superficie") %>' />
                         </span>

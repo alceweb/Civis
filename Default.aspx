@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Agenzia immobiliare Busto Arsizio" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
 	<script type="text/javascript" src="Scripts/jquery-1.2.2.pack.js"></script>
@@ -30,8 +30,8 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <div class="TableVetrina" >
-                <h3 class="TitoloVetrina">I nostri servizi</h3>
+    <div class="TableVetrina">
+                <h3 class="TitoloVetrina">Agenzia immobiliare Busto Arsizio<br />I nostri servizi</h3>
                 <h5>
                 <img alt="" src="Images/Libri1.jpg" />
                     CONSULENZA NORMATIVA E CONTRATTUALE</h5>
@@ -118,41 +118,46 @@
                     La CIVIS IMMOBILIARE offre alle imprese e al cliente privato la valutazione del piano economico relativo ad un investimento immobiliare con il reperimento dell’immobile o il calcolo di costi e ricavi
     </div>
         <hr />
-        </div>            
+        </div>
+    <div class="Sede">
+            <h3 class="TitoloVetrina">La nostra sede</h3>
+            <h5>
+                <asp:LinkButton ID="LinkButton1" runat="server" Text="Mostra mappa" OnClick="LinkButton1_Click"></asp:LinkButton></h5>
+        <asp:Panel ID="pnlSede" runat="server">
+            <img src="Images/Sede1.jpg" />
+        </asp:Panel>
+        <asp:Panel ID="pnlMappa" Visible="false" runat="server">
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2791.0083587567633!2d8.8539621!3d45.610476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47868b88e22d9b0d%3A0xeb74e60ef9dfaf93!2sPiazza+Trento+e+Trieste%2C+10%2C+21052+Busto+Arsizio+VA!5e0!3m2!1sit!2sit!4v1429003881803" width="380" height="290" frameborder="0" style="border: 0"></iframe>
+            </div>
+        </asp:Panel>
+    </div>
     <div class="Occasioni">
-        <h3 class="TitoloVetrina">Occasioni</h3>
-        <asp:GridView ID="GridView1" runat="server" CellPadding="2" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <Columns>
-                <asp:TemplateField ShowHeader="False">
-                    <ItemTemplate>
-                        <span class="galla">
-                        <a href='ImmDett.aspx?id=<%#Eval("id")%>'>
+            <h3 class="TitoloVetrina">Occasioni</h3>
+            <h5></h5>
+            <asp:ListView ID="ListView1" DataSourceID="SqlDataSource1" runat="server">
+                <ItemTemplate>
+                    <asp:Panel ID="pnlOcc" CssClass="gallaOcc" runat="server">
+                        <hr /><a href='ImmDett.aspx?id=<%#Eval("id")%>'>
                             <asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/ImgImm/" + Eval("id") + ".jpg" %>' /></a>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Città") %>' Font-Bold="True"></asp:Label><br />
+                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Tipologia") %>'></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Prezzo", "{0:N0}") %>'></asp:Label>
 
-                        </span>
-                    </ItemTemplate>
-                    <ItemStyle Width="10px" />
-                </asp:TemplateField>
-                <asp:BoundField DataField="Città" />
-                <asp:BoundField DataField="Tipologia" />
-                <asp:BoundField DataField="Prezzo" DataFormatString="{0:N0}">
-                    <HeaderStyle HorizontalAlign="Right" />
-                </asp:BoundField>
-            </Columns>
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Table].[Id], [Table].[Città], [Table].[Prezzo], [Table].[Superficie], Tipologie.Tipologia FROM [Table]
+                    </asp:Panel>
+                </ItemTemplate>
+                <ItemSeparatorTemplate>
+                    <br />
+                </ItemSeparatorTemplate>
+            </asp:ListView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Table].[Id], [Table].[Città], [Table].[Prezzo], [Table].[Superficie], Tipologie.Tipologia FROM [Table]
             Inner Join Tipologie on [Table].[Tipologia] = [Tipologie].[ID]  
                 WHERE [Table].[Vetrina] = @Vetrina">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="True" Name="Vetrina" Type="Boolean" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-    </div>
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="True" Name="Vetrina" Type="Boolean" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+        </div>
 </asp:Content>
 <asp:Content ID="Content1" runat="server" contentplaceholderid="HeadContent">
     </asp:Content>

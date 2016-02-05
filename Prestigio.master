@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Prestigio.master.cs" Inherits="Prestigio" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="Content/Prestigio.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <div class="headerPr" >
+    <a href="Default1.aspx"><img class="logo" src='<%: ResolveUrl("~/Images/LogoPr.png") %>' /></a>
+        <a href="ContentPr1.aspx"><img class="imgCerchio" src="Images/Slides/1.png" /></a>
+         <a href="ContentPr2.aspx"><img class="imgCerchio" src="Images/Slides/2.png" /></a>
+        <a href="ContentPr3.aspx"><img class="imgCerchio" src="Images/Slides/3.png" /></a>
+        <a href="ContentPr4.aspx"><img class="imgCerchio" src="Images/Slides/4.png" /></a>
+        <br /><span class="titolo">IMMOBILI DI PRESTIGIO</span><br /><br />
+   </div>
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

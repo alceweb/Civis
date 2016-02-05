@@ -21,7 +21,7 @@
         <AlternatingItemTemplate>
             <tr >
                 <td>
-                    <asp:Button ID="DeleteButton" runat="server" OnClientClick="return confirm('L\'immobile sarà eliminato definitivamente!!!')" CommandName="Delete" Text="Elimina" ForeColor="White" BackColor="#B30000" />
+                    <asp:Button ID="DeleteButton" runat="server" OnClientClick="return confirm('Prima di eliminare l\'immobile, ricordati di eliminare le fotografie. Elimino l\'immobile?')" CommandName="Delete" Text="Elimina" ForeColor="White" BackColor="#B30000" />
                 </td>
                 <td>
                     <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
@@ -43,7 +43,7 @@
         <ItemTemplate>
             <tr style="background-color: #F0F0F0">
                 <td>
-                    <asp:Button ID="DeleteButton" runat="server" OnClientClick="return confirm('L\'immobile sarà eliminato definitivamente!!!')" CommandName="Delete" Text="Elimina" ForeColor="White" BackColor="#000066" />
+                    <asp:Button ID="DeleteButton" runat="server" OnClientClick="return confirm('Prima di eliminare l\'immobile, ricordati di eliminare le fotografie. Elimino l\'immobile?')" CommandName="Delete" Text="Elimina" ForeColor="White" BackColor="#000066" />
                 </td>
                 <td>
                     <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />

@@ -27,14 +27,11 @@
             </tr>
         </GroupTemplate>
         <ItemTemplate>
-            <td id="Td2" runat="server" style="">ID:<strong><%# Eval("ID")  %>-</strong><asp:Label ID="TipoLabel" runat="server" Text='<%# Eval("Codice") %>' Font-Bold="True" />
-                - Città:
-                                    <em>
-                                        <asp:Label ID="CittàLabel" runat="server" Text='<%# Eval("Città") %>' Font-Bold="True" /></em>
-             - Prezzo: <em>
-                <asp:Label ID="PrezzoLabel" runat="server" Text='<%# Eval("Prezzo", "{0:c0}") %>' Font-Bold="True" /></em>
-             - Superficie Mq: <em>
-                <asp:Label ID="SupLabel" runat="server" Text='<%# Eval("Superficie") %>' Font-Bold="True" /></em><hr />
+            <td id="Td2" runat="server" style="">
+                ID:<strong><%# Eval("ID")  %>-</strong><asp:Label ID="TipoLabel" runat="server" Text='<%# Eval("Codice") %>' Font-Bold="True" />
+                - Città:<em><asp:Label ID="CittàLabel" runat="server" Text='<%# Eval("Città") %>' Font-Bold="True" /></em>
+                - Prezzo: <em><asp:Label ID="PrezzoLabel" runat="server" Text='<%# Eval("Prezzo", "{0:c0}") %>' Font-Bold="True" /></em>
+                - Superficie Mq: <em><asp:Label ID="SupLabel" runat="server" Text='<%# Eval("Superficie") %>' Font-Bold="True" /></em><hr />
                 <a href='<%# "ImmDett.aspx?id=" +  Eval("Id") %>' runat="server" style="color:#FFFFFF; font-weight: bold; float: right; font-style: italic;" >Torna alla scheda immobile</a>
             </td>
         </ItemTemplate>
@@ -65,6 +62,8 @@
                             <asp:QueryStringParameter Name="Id" QueryStringField="id" Type="Int32" />
                         </SelectParameters>
                     </asp:SqlDataSource>
+
+
     <table>
         <tr>
             <td>

@@ -5,13 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class ImgImm_Main : System.Web.UI.Page
+namespace Civis.ImgImm
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Main : System.Web.UI.Page
     {
-        string cartella = "~/ImgImm/" + Request.QueryString["ID"];
-        string[] immagini = System.IO.Directory.GetFiles(Server.MapPath(cartella), "*.jpg");
-        lista.DataSource = immagini;
-        lista.DataBind();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string cartella = "~/ImgImm/" + Request.QueryString["ID"];
+            string[] immagini = System.IO.Directory.GetFiles(Server.MapPath(cartella), "5091-*.jpg");
+            lista.DataSource = immagini;
+            lista.DataBind();
+        }
     }
 }

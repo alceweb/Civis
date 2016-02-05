@@ -96,9 +96,9 @@
                             </span>
                         </td>
                         <td>
-                            <span class="labLeft">Superficie (m<sup>2</sup>):</span>
+                            <span class="labLeft">Superficie comm. m<sup>2</sup>:</span>
                             <span class="labRigth">
-                                <asp:Label ID="SuperficieLabel" Width="100px" runat="server" Text='<%# Bind("Superficie") %>' />
+                                <asp:Label ID="SuperficieLabel" runat="server" Text='<%# Bind("Superficie") %>' />
                             </span>
                         </td>
                         <td>
@@ -266,12 +266,12 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="4">
+                        <td colspan="4" style="padding-left: 20px">
                             <hr />
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="padding-left: 20px">
                             <span class="labRigth">Pannelli solari
                                     <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("PannelliSolari") %>' Enabled="False" /></span>
                         </td>
@@ -289,7 +289,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="padding-left: 20px">
                             <span class="labRigth">Balcone
                                     <asp:CheckBox ID="CheckBox5" runat="server" Checked='<%# Bind("Balcone") %>' Enabled="False" /></span>
                         </td>
@@ -308,7 +308,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="padding-left: 20px">
                             <span class="labRigth">Mezzi pubblici
                                     <asp:CheckBox ID="CheckBox9" runat="server" Checked='<%# Bind("MezziPubblici") %>' Enabled="False" /></span>
                         </td>
@@ -325,7 +325,7 @@
                                     <asp:CheckBox ID="CheckBox13" runat="server" Checked='<%# Bind("CancelloElettrico") %>' Enabled="False" /></span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="padding-left: 20px">
                         <td style="padding-left: 20px; font-weight: bold; text-transform: uppercase;" colspan="4">
                             <hr />
                             Descrizione:<br />

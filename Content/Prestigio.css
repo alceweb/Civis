@@ -1,0 +1,194 @@
+﻿html {
+    /*background-color: #e2e2e2;*/
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    border-top: solid 10px #000;
+    color: #fff;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+.bodyImg {
+    width: 100%;
+    z-index: -1000;
+    position: absolute;
+    overflow:hidden;
+    top:0px;
+}
+.headerPr {
+    height:140px;    
+}
+.wrapper {
+    position:absolute;
+}
+.titolo {
+    text-shadow: 0px 0px 5px #fff;
+    color: #000;
+    font-size: 3.5em;
+}
+.logo {
+    float:left;
+    margin:0px 20px 0px 0px;
+}
+.imgCerchio {
+    height:100px;
+    z-index:9999;
+    transition:all 1s;
+}
+    .imgCerchio:hover {
+    transform: scale(1.5) rotate(-360deg);
+    -ms-transform: scale(1.5) rotate(-360deg);
+    -webkit-transform: scale(1.5) rotate(-360deg);
+}
+.h2content {
+	font-size: 30px;
+	line-height: 50px;
+	font-family: 'Playfair Display', serif;
+	text-transform: uppercase;
+	color: #fff;
+    background-color: rgba(0, 0, 0, 0.71);
+}
+    .h2content span {
+    font-size: 1em;
+}
+
+.caption {
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+    float: left;
+    margin: 10px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow:0px 0px 5px #fff;
+    border-radius:15px;
+}
+ 
+.caption img {
+    float: left;
+    width:300px;
+    border-radius:15px;
+}
+ 
+.caption span {
+    float: left;
+    width: 100%;
+    color: #dedede;
+    background: #222; /* browser che non supportano rgba */
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    left: 0;
+    margin-right:20px;
+    bottom: 0;
+    -ms-transform: scale(0); /* IE 9 */
+    -webkit-transform: scale(0); /* Chrome, Safari, Opera */
+    transform: scale(0);
+    transition:all 1s;
+}
+.caption:hover span { 
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Chrome, Safari, Opera */
+    transform: scale(1);
+    transition:all 1s;
+    z-index:9999;
+}
+
+.caption span strong {
+    font-weight: bold;
+    font-size: 11px;
+    text-transform: uppercase;
+    display: block;
+    padding-bottom: 5px;
+}
+
+
+.linkBtn {
+    text-decoration: none;
+    font-size: 0.5em;
+    transition:all 0.4s;
+    color:#000;
+    text-shadow: 1px 0pc 1px #fff, 0px 1px 1px #7ac5f1;
+    text-transform:lowercase;
+    padding: 0px 10px 0px 10px;
+}
+    .linkBtn:hover {
+        transform:scale(1.8);
+        transition:all 1s;
+        text-shadow: 0px 0px 5px #000;
+        color:#fff;
+        background-color:rgba(0, 0, 0, 0.83);
+        border-radius:10px;
+    }
+.descrizione {
+    background: rgba(0,0,0,0.7);
+	position: absolute;
+	right: 50%;
+	margin-right: 13%;
+    margin-left:1%;
+    margin-top:-20px;
+    padding:5px 10px 5px 10px;
+    box-shadow: 2px 2px 15px #fff ;
+}
+.descrizione1 {
+    background: rgba(0,0,0,0.7);
+	position: absolute;
+    padding: 30px 0px 30px 0px;
+    width:100%;
+    text-align:center;
+    box-shadow: 10px 10px 15px #fff;
+    margin-top:-20px;
+}
+
+/********************
+*   Mobile Styles   *
+********************/
+@media only screen and (max-width: 850px) {
+    .titolo {
+        display:none;
+    }
+    .imgCerchio {
+    height:30%;
+    z-index:9999;
+    transition:all 1s;
+    }    
+    .logo {
+        display:inline-block;
+        clear:right;
+        height:120px;
+        margin:0px 5px 0px 0px;
+    }
+    .descrizione {
+	right: 0;
+	margin-right: 13%;
+    margin-left:1%;
+    }
+.bodyImg {
+    width:auto;
+    height: auto;
+    z-index: -1000;
+    position: absolute;
+    overflow:hidden;
+    }
+    .linkBtn {
+        text-decoration: none;
+        font-size: 0.5em;
+        transition:all 0.4s;
+        color:#000;
+        text-shadow: 1px 0pc 1px #fff, 0px 1px 1px #7ac5f1;
+        text-transform:lowercase;
+        padding: 0px 10px 0px 10px;
+    }
+    .linkBtn:hover {
+        transform:scale(1.1);
+        transition:all 1s;
+        text-shadow: 0px 0px 5px #000;
+        color:#fff;
+        background-color:rgba(0, 0, 0, 0.83);
+        border-radius:10px;
+    }
+}

@@ -1,10 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+
 <!DOCTYPE html>
 <html lang="it">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <title><%: Page.Title %> Civis Immobiliare</title>
+    <meta content="agenzia immobiliare Busto Arsizio, vendita immobili" name="keywords" />
+    <title>Civis Immobiliare: <%: Page.Title %> </title>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:PlaceHolder runat="server">           
         <script src="<%: ResolveUrl("~/Scripts/modernizr-2.6.2.js") %>"></script>
@@ -12,11 +15,17 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+<%--    <script>
+        (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.paramet.Node.insertBefore(a, m) })(window.document, 'script', '//www.google.analytics.com/analitycs.js', 'ga');
+        ga('create', 'UA-57582143-1', 'auto');
+        ga('send', 'pageview');
+    </script>--%>
     <style type="text/css">
     </style>
     </head>
 <body>
     <form runat="server">
+<%--<friendlyUrls:ViewSwitcher ID="ViewSwitcher1" runat="server" />--%>
     <link href="<%: ResolveUrl(mob) %>" rel="stylesheet" />
 <%--    <asp:ScriptManager runat="server">
         <Scripts>
@@ -64,6 +73,20 @@
             </header>
         </div>
     <div id="body">
+        <asp:Panel ID="PnlCookie" runat="server">
+            <div class="divCook">
+               <span>
+                Questo sito utilizza cookie di profilazione, propri o di altri.<br />
+                Se accedi a un qualunque elemento del sito acconsenti all'uso del cookie. 
+                 Se vuoi saperne di più o negare il consenso a tutti o alcuni cookie clicca <a href="CookiesInfo.aspx" runat="server" id="Cookies">qui</a>.
+               </span><br /><br />
+                <div style="text-align:center">
+                <asp:Button ID="CookieButton" runat="server" OnClick="CookieButton_Click" Text="Acconsenti"></asp:Button>
+
+                </div>
+            </div>
+
+        </asp:Panel>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" >
@@ -76,7 +99,7 @@
     <footer>
         <div class="content-wrapper">
             <div >
-                <span>CIVIS IMMOBILIARE snc - Via Ghioldi, 7 - 21057 - Olgiate Olona (VA) Giorgio: 335 6447322&nbsp; Elena: 392 9165724 | P.Iva:  03129250126 | info@civisimmobiliare.it</span>
+                <span>Agenzia immobiliare Busto Arsizio - CIVIS IMMOBILIARE snc - Piazza Trento Trieste, 10 - Busto Arsizio - 21052 (VA) Giorgio: 335 6447322&nbsp; Elena: 392 9165724 | P.Iva:  03129250126 | info@civisimmobiliare.it</span>
                      <span style="float:right" >&copy; <%: DateTime.Now.Year %>
                             <a href="http://www.cr-consult.eu" ><em>Almish</em><span style="color:#FF0000" lang="it">&amp;</span><em>Cesàre</em><span style="color:#FF0000">W</span><em>eb</em></a>
                             

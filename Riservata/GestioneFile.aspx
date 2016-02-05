@@ -20,8 +20,10 @@
 <!--- Gestione file JPG--->
 <h3>Gestione file <strong>jpg</strong> sull'immobile selezionato</h3><br />
     <div class="float-left">
+        <p>Seleziona l'immobile
         <asp:TextBox ID="TextBox1" Width="180" AutoPostBack="true" placeholder="Scrivi parte del codice" runat="server"></asp:TextBox><br />
-        <asp:ListView ID="ListView1" OnDataBound="ListView1_DataBound" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+        </p>
+        <asp:ListView ID="ListView1" OnSelectedIndexChanging="ListView1_SelectedIndexChanging" OnDataBound="ListView1_DataBound" runat="server" DataKeyNames="Id" DataSourceID="SqlDataSource1">
             <ItemSeparatorTemplate>
                 <br />
             </ItemSeparatorTemplate>
@@ -33,35 +35,38 @@
                 </asp:LinkButton>
             </ItemTemplate>
             <SelectedItemTemplate>
-                <asp:Label ID="lblCategotia" runat="server" Text='<%# Eval("Codice") %>' Font-Bold="True" Font-Italic="True" ForeColor="#CC0000"></asp:Label>
+                <div style="text-align:right; background-color:#000; color:#fff">
+                ID: <asp:Label ID="Label2" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                Codice: <asp:Label ID="lblCategotia" runat="server" Text='<%# Eval("Codice") %>' Font-Bold="True" Font-Italic="True" ForeColor="#CC0000"></asp:Label><br />
+                <strong><asp:Label ID="Label3" runat="server" Text='<%# Eval("Città") %>'></asp:Label></strong>-
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Categoria") %>'></asp:Label>-
+                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Tipologia") %>'></asp:Label>
+
+                </div>
             </SelectedItemTemplate>
         </asp:ListView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
-            SelectCommand="SELECT * from [Table] Where ([Codice] LIKE '%' + @Cod + '%') order by Codice">
+            SelectCommand="SELECT [Table].[Id], [Table].[Codice], [Table].[Città], Categorie.categoria, Tipologie.Tipologia FROM [Table]  
+                                Inner Join Categorie on [Table].[Categoria] = [categorie].[ID]
+                                Inner Join Tipologie on [Table].[Tipologia] = [Tipologie].[ID] Where ([Codice] LIKE '%' + @Cod + '%') order by Codice">
             <SelectParameters>
                 <asp:ControlParameter ControlID="TextBox1" Name="Cod" Type="String" PropertyName="Text" />
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
     <asp:Panel ID="Panel1" Visible="false" runat="server">
-        <div style="margin-left: 200px">
-            <asp:Label ID="lblDeleteOkJpg" runat="server"></asp:Label><br />
-            <asp:ListBox ID="lb1" AutoPostBack="true" OnDataBound="lb1_DataBound" runat="server"></asp:ListBox>
-            <asp:Label ID="lb1Label" runat="server"></asp:Label>
-            <br />
-            <asp:Button ID="btnDelJpg" runat="server" OnClick="btnDelJpg_Click" OnClientClick='return confirm("Stai cancellando il file selezionata. Continuare?")' BackColor="Red" ForeColor="white" Text="Cancella JPG" />
-            <asp:Button ID="btnAnnullaJpg" OnClick="btnAnnullaJpg_Click" runat="server" Text="Annulla Selezione" BackColor="Green" ForeColor="White" /><br />
-        </div>
-        <div style="margin-left: 200px">
-            <asp:ListView ID="ListViewImg" runat="server">
-                <ItemTemplate>
-                    <div class="galla" style="float: left">
-                        <a href='../<%# (Container.DataItem as string).Substring(Server.MapPath("~/").Length).Replace("\\", "/") %>'>
-                            <img style="box-shadow: 0px 0px 4px #000" height="90" title='<%# (Container.DataItem as string).Substring(Server.MapPath("~/").Length).Replace("\\", "/") %>' src='../<%# (Container.DataItem as string).Substring(Server.MapPath("~/").Length).Replace("\\", "/") %>' />
-                        </a>
-                    </div>
-                </ItemTemplate>
-            </asp:ListView>
+        <div style="margin-left: 200px; display:table">
+                <asp:ListView ID="ListView2" runat="server">
+                    <ItemTemplate>
+                        <div class="div1" >
+
+                                <asp:LinkButton ID="lnkDownload" Text="Download" CommandArgument='<%# Eval("Value") %>' runat="server" OnClick="DownloadFile"></asp:LinkButton>
+                                - 
+                                    <asp:LinkButton ID="lnkDelete" Text="Cancella" CommandArgument='<%# Eval("Value") %>' OnClientClick='return confirm("Stai cancellando un immagine! Continuare?")' runat="server" OnClick="DeleteFile" /><br />
+                                <a target="_blank" href='<%# "/ImgImm/" + Eval("Text") %>'><img src='<%# "/ImgImm/" + Eval("Text") %>' /></a><br />
+                        </div>
+                    </ItemTemplate>
+                </asp:ListView>
         </div>
     </asp:Panel>
 </asp:Content>
